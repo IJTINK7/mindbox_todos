@@ -1,10 +1,11 @@
 import './App.css'
+import {Todolist} from "./components/Todolist.tsx";
 
 function App() {
 
   return (
     <>
-        To do list will be here
+        <Todolist/>
     </>
   )
 }
