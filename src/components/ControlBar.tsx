@@ -1,35 +1,33 @@
-import React, {useState} from "react";
-import {FilterType} from "./Todolist.tsx";
+import {useState} from "react";
 import styles from "./ControlBar.module.css"
-export type ControlBarType = {
-	changeFilter: (filterValue: FilterType)=> void
-}
+import {useDispatch} from "react-redux";
+import {changeFilterActionCreator, FilterType} from "../store/todolist-reducer.ts";
 
-export const ControlBar: React.FC<ControlBarType> = ({changeFilter}) => {
+export const ControlBar = () => {
+	const dispatch = useDispatch()
 	const [leftItemsCount, setLeftItemsCount] = useState<number>(0)
 
-	const onAllClickHandler = (value:FilterType) => {
-		changeFilter(value)
-		setLeftItemsCount(1)
+	const onAllClickHandler = (filterValue: FilterType) => {
+		dispatch(changeFilterActionCreator(filterValue))
+
 	}
-	const onActiveClickHandler = (value:FilterType) => {
-		changeFilter(value)
-		setLeftItemsCount(2)
+	const onActiveClickHandler = (filterValue: FilterType) => {
+		dispatch(changeFilterActionCreator(filterValue))
 	}
-	const onCompletedClickHandler = (value:FilterType) => {
-		changeFilter(value)
-		setLeftItemsCount(3)
+	const onCompletedClickHandler = (filterValue: FilterType) => {
+		dispatch(changeFilterActionCreator(filterValue))
 	}
 	const clearCompletedTasksHandler = () => {
 		console.log("Completed tasks were cleared")
+		setLeftItemsCount(123)
 	}
 	return (
 		<div className={styles.controlBar}>
 			<div>{leftItemsCount} item(s) left</div>
 			<div style={{gap: "20px", display: "flex"}}>
-				<button onClick={()=>onAllClickHandler("all")}>All</button>
-				<button onClick={()=>onActiveClickHandler("active")}>Active</button>
-				<button onClick={()=>onCompletedClickHandler("completed")}>Completed</button>
+				<button onClick={() => onAllClickHandler("all")}>All</button>
+				<button onClick={() => onActiveClickHandler("active")}>Active</button>
+				<button onClick={() => onCompletedClickHandler("completed")}>Completed</button>
 			</div>
 			<div>
 				<button onClick={clearCompletedTasksHandler}>Clear completed</button>
