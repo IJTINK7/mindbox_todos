@@ -1,29 +1,26 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react';
-import {useDispatch} from "react-redux";
-import {addTaskActionCreator} from "../store/todolist-reducer.ts";
+import {ChangeEvent, KeyboardEvent} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {addTaskActionCreator, addTaskTitleActionCreator} from "../store/todolist-reducer.ts";
+import {AppRootStateType} from "../store/store.ts";
 
-type TodolistInputType = {
-	value: string
-	setInputValue: (inputValue: string) => void
-}
-
-export const TodolistInput: React.FC<TodolistInputType> = ({value, setInputValue}) => {
+export const TodolistInput= () => {
+	const taskTitleInputValue = useSelector<AppRootStateType, string>(state => state.todolist.taskTitleInputValue)
 	const dispatch = useDispatch()
 
 	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setInputValue(e.currentTarget.value)
+		dispatch(addTaskTitleActionCreator(e.currentTarget.value))
 	}
 
 	const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === "Enter") {
-			setInputValue("")
+			dispatch(addTaskTitleActionCreator(""))
 			dispatch(addTaskActionCreator(e.currentTarget.value))
 		}
 	}
 
 	return (
 		<div style={{margin: "0 auto"}}>
-			<input value={value} onChange={onChangeHandler} onKeyDown={onKeyDownHandler}/>
+			<input value={taskTitleInputValue} onChange={onChangeHandler} onKeyDown={onKeyDownHandler}/>
 		</div>
 	);
 };
