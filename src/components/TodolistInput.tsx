@@ -18,7 +18,7 @@ export const TodolistInput: React.FC<TodolistInputType> = ({value,setInputValue,
 		}
 	}
 	return (
-		<div>
+		<div style={{margin: "0 auto"}}>
 			<input value={value} onChange={onChangeHandler} onKeyDown={onKeyDownHandler}/>
 		</div>
 	);
