@@ -25,8 +25,9 @@ export type AddTaskActionType = ReturnType<typeof addTaskActionCreator>
 export type ChangeTaskStatusActionType = ReturnType<typeof changeTaskStatusActionCreator>
 export type ChangeFilterActionType = ReturnType<typeof changeFilterActionCreator>
 export type AddTaskTitleActionType = ReturnType<typeof addTaskTitleActionCreator>
+export type ClearCompletedTasksActionType = ReturnType<typeof clearCompletedTasksActionCreator>
 
-type ActionsType = AddTaskActionType | ChangeTaskStatusActionType | ChangeFilterActionType | AddTaskTitleActionType
+type ActionsType = AddTaskActionType | ChangeTaskStatusActionType | ChangeFilterActionType | AddTaskTitleActionType | ClearCompletedTasksActionType
 
 export const todolistReducer = (state: TodolistType = initialState, action: ActionsType): TodolistType => {
 	switch (action.type) {
@@ -45,6 +46,9 @@ export const todolistReducer = (state: TodolistType = initialState, action: Acti
 		case 'ADD-TASK-TITLE': {
 			return {...state, taskTitleInputValue: action.taskTitle}
 		}
+		case "CLEAR-COMPLETED-TASKS":{
+			return {...state, tasksData: state.tasksData.filter(el => !el.isDone)}
+		}
 		default:
 			return state;
 	}
@@ -61,5 +65,8 @@ export const changeFilterActionCreator = (filter: FilterType) => {
 }
 export const addTaskTitleActionCreator = (taskTitle: string) => {
 	return {type: 'ADD-TASK-TITLE', taskTitle} as const
+}
+export const clearCompletedTasksActionCreator = () => {
+	return {type: 'CLEAR-COMPLETED-TASKS'} as const
 }
 
