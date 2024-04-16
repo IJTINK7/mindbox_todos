@@ -1,4 +1,9 @@
-import {changeTaskStatusActionCreator, FilterType, TaskType} from "../store/todolist-reducer.ts";
+import {
+	changeTaskStatusActionCreator,
+	countActiveTasksActionCreator,
+	FilterType,
+	TaskType
+} from "../store/todolist-reducer.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../store/store.ts";
 
@@ -9,6 +14,7 @@ export const TasksBar = () => {
 	const dispatch = useDispatch()
 	const onChangeTaskStatusHandler = (taskId: string, isDone: boolean) => {
 		dispatch(changeTaskStatusActionCreator(taskId, isDone))
+		dispatch(countActiveTasksActionCreator())
 	}
 	const filteredTasks = tasks.filter(task => {
 		if (filter === 'active') {
@@ -25,7 +31,7 @@ export const TasksBar = () => {
 			{filteredTasks.map(el => {
 				return (
 					<ul key={el.id}>
-						<li><input type='checkbox' checked={el.isDone} onChange={() => onChangeTaskStatusHandler(el.id, el.isDone)}/><span>{el.title}</span>
+						<li style={el.isDone ? {opacity: 0.5, textDecoration: "line-through" }:{opacity: 1} }><input type='checkbox' checked={el.isDone} onChange={() => onChangeTaskStatusHandler(el.id, el.isDone)}/><span>{el.title}</span>
 						</li>
 					</ul>
 				)
