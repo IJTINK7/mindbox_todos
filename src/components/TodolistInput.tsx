@@ -6,7 +6,7 @@ type TodolistInputType = {
 	onKeyDownCallBack: (key: string) => void
 }
 
-export const TodolistInput: React.FC<TodolistInputType> = ({value,setInputValue, onKeyDownCallBack}) => {
+export const TodolistInput: React.FC<TodolistInputType> = ({value,setInputValue,onKeyDownCallBack}) => {
 
 	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.currentTarget.value)
