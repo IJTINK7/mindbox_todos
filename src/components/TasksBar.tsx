@@ -31,7 +31,9 @@ export const TasksBar = () => {
 			{filteredTasks.map(el => {
 				return (
 					<ul key={el.id}>
-						<li style={el.isDone ? {opacity: 0.5, textDecoration: "line-through" }:{opacity: 1} }><input type='checkbox' checked={el.isDone} onChange={() => onChangeTaskStatusHandler(el.id, el.isDone)}/><span>{el.title}</span>
+						<li style={el.isDone ? {opacity: 0.5, textDecoration: "line-through"} : {opacity: 1}}><input
+							type='checkbox' checked={el.isDone}
+							onChange={() => onChangeTaskStatusHandler(el.id, el.isDone)}/><span>{el.title}</span>
 						</li>
 					</ul>
 				)

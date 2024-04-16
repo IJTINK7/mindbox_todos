@@ -30,18 +30,28 @@ export type AddTaskTitleActionType = ReturnType<typeof addTaskTitleActionCreator
 export type ClearCompletedTasksActionType = ReturnType<typeof clearCompletedTasksActionCreator>
 export type CountActiveTasksActionCreator = ReturnType<typeof countActiveTasksActionCreator>
 
-type ActionsType = AddTaskActionType | ChangeTaskStatusActionType | ChangeFilterActionType | AddTaskTitleActionType | ClearCompletedTasksActionType | CountActiveTasksActionCreator
+type ActionsType =
+	AddTaskActionType
+	| ChangeTaskStatusActionType
+	| ChangeFilterActionType
+	| AddTaskTitleActionType
+	| ClearCompletedTasksActionType
+	| CountActiveTasksActionCreator
 
 export const todolistReducer = (state: TodolistType = initialState, action: ActionsType): TodolistType => {
 	switch (action.type) {
 		case 'ADD-TASK':
-			return {...state,
+			return {
+				...state,
 				tasksData: [...state.tasksData, {id: v1(), title: action.title, isDone: false}],
 				activeItemsCount: state.activeItemsCount + 1
 			}
 
 		case 'CHANGE-TASK-STATUS': {
-			const updatedTasks = state.tasksData.map(el => el.id === action.taskId ? {...el, isDone: !action.isDone} : el)
+			const updatedTasks = state.tasksData.map(el => el.id === action.taskId ? {
+				...el,
+				isDone: !action.isDone
+			} : el)
 			const activeTasksCount = updatedTasks.filter((el) => !el.isDone).length;
 			return {
 				...state,
@@ -55,11 +65,11 @@ export const todolistReducer = (state: TodolistType = initialState, action: Acti
 		case 'ADD-TASK-TITLE': {
 			return {...state, taskTitleInputValue: action.taskTitle}
 		}
-		case "CLEAR-COMPLETED-TASKS":{
+		case "CLEAR-COMPLETED-TASKS": {
 			return {...state, tasksData: state.tasksData.filter(el => !el.isDone)}
 		}
-		case "COUNT-ACTIVE-TASKS":{
-			return {...state, activeItemsCount: state.tasksData.filter(el=> !el.isDone).length }
+		case "COUNT-ACTIVE-TASKS": {
+			return {...state, activeItemsCount: state.tasksData.filter(el => !el.isDone).length}
 		}
 		default:
 			return state;

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addTaskActionCreator, addTaskTitleActionCreator} from "../store/todolist-reducer.ts";
 import {AppRootStateType} from "../store/store.ts";
 
-export const TodolistInput= () => {
+export const TodolistInput = () => {
 	const taskTitleInputValue = useSelector<AppRootStateType, string>(state => state.todolist.taskTitleInputValue)
 	const dispatch = useDispatch()
 
