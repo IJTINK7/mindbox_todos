@@ -19,8 +19,6 @@ export const TodolistInput = () => {
 	}
 
 	return (
-		<div style={{margin: "0 auto"}}>
-			<input value={taskTitleInputValue} onChange={onChangeHandler} onKeyDown={onKeyDownHandler}/>
-		</div>
+			<input value={taskTitleInputValue} onChange={onChangeHandler} onKeyDown={onKeyDownHandler} placeholder={"What needs to be done?"}/>
 	);
 };

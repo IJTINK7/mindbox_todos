@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 #root {
     max-width: 640px;
@@ -6,11 +6,71 @@
     padding: 32px 16px;
     box-sizing: border-box;
     background-color: #F5F5F5;
-    border-radius: 32px;
-    font-family: Inter, sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
     font-size: 32px;
+    min-height: 100vh;
 }
 
 ul{
-    list-style-type: none
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ul > li{
+    padding: 0;
+    margin: 0;
+}
+
+input, input:focus{
+    border: none;
+    outline: none;
+    width: 580px;
+    height: 55px;
+    padding: 0 60px 0 15px;
+    font-size: 20px;
+}
+input::placeholder{
+    opacity: 0.2;
+    font-style: italic;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    color: #E9DAD9;
+    font-size: 108px;
+    padding: 0;
+    margin: 0 auto;
+}
+button{
+    border: none;
+    width: auto;
+    height: 32px;
+    background: transparent;
+    border-radius: 4px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    opacity: 0.8;
+}
+button:hover{
+    background: #eaeaea;
+}
+
+span{
+    word-wrap: break-word;
+    padding-left: 10px;
+}
+hr{
+    width: 100%;
+    opacity: 0.5;
+
+}
+hr:first-child{
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.5);
+    margin: 0 0 16px 0;
+    padding: 0;
 }

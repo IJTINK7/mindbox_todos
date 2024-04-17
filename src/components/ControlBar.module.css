@@ -2,4 +2,17 @@
     display: flex;
     justify-content: space-between;
     gap: 50px;
+    align-content: center;
+    align-items: center;
+    padding: 0 15px;
+    font-family: "Roboto", sans-serif;
+    opacity: 0.8;
+    font-weight: 200;
+}
+.controlBar > div, .controlBar > div> button, .controlBar > button{
+    font-size: 16px;
+}
+
+.activeFilter{
+    border: 1px solid #E9DAD9
 }

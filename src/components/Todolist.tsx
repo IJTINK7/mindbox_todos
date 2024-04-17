@@ -1,15 +1,12 @@
-import {TodolistInput} from "./TodolistInput.tsx";
-import {ControlBar} from "./ControlBar.tsx";
 import styles from "./Todolist.module.css"
-import {TasksBar} from "./TasksBar.tsx";
+import {NestedList} from "./NestedList.tsx";
 
 export const Todolist = () => {
 
 	return (
 		<div className={styles.todolist}>
-			<TodolistInput/>
-			<TasksBar/>
-			<ControlBar/>
+			<h1>todos</h1>
+			<NestedList/>
 		</div>
 	);
 };

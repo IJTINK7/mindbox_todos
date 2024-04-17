@@ -6,6 +6,9 @@ import {
 } from "../store/todolist-reducer.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../store/store.ts";
+import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import {Checkbox} from "@mui/material";
 
 
 export const TasksBar = () => {
@@ -27,13 +30,15 @@ export const TasksBar = () => {
 	});
 
 	return (
-		<div style={{margin: "0 auto"}}>
+		<div>
 			{filteredTasks.map(el => {
 				return (
 					<ul key={el.id}>
-						<li style={el.isDone ? {opacity: 0.5, textDecoration: "line-through"} : {opacity: 1}}><input
-							type='checkbox' checked={el.isDone}
-							onChange={() => onChangeTaskStatusHandler(el.id, el.isDone)}/><span>{el.title}</span>
+						<li style={el.isDone ? {opacity: 0.5, textDecoration: "line-through"} : {opacity: 1}}>
+							<Checkbox icon={<RadioButtonUncheckedIcon fontSize="large"/>} checkedIcon={ <CheckCircleOutlinedIcon fontSize="large"/>}
+								checked={el.isDone} onChange={() => onChangeTaskStatusHandler(el.id, el.isDone)}/>
+							<span>{el.title}</span>
+							<hr/>
 						</li>
 					</ul>
 				)
