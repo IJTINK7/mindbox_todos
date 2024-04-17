@@ -1,7 +1,7 @@
 .controlBar{
     display: flex;
     justify-content: space-between;
-    gap: 50px;
+    gap: 30px;
     align-content: center;
     align-items: center;
     padding: 0 15px;
@@ -10,7 +10,7 @@
     font-weight: 200;
 }
 .controlBar > div, .controlBar > div> button, .controlBar > button{
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .activeFilter{

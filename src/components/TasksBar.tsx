@@ -35,7 +35,7 @@ export const TasksBar = () => {
 				return (
 					<ul key={el.id}>
 						<li style={el.isDone ? {opacity: 0.5, textDecoration: "line-through"} : {opacity: 1}}>
-							<Checkbox icon={<RadioButtonUncheckedIcon fontSize="large"/>} checkedIcon={ <CheckCircleOutlinedIcon fontSize="large"/>}
+							<Checkbox icon={<RadioButtonUncheckedIcon fontSize="large"/>} checkedIcon={ <CheckCircleOutlinedIcon fontSize="large" color="success"/>}
 								checked={el.isDone} onChange={() => onChangeTaskStatusHandler(el.id, el.isDone)}/>
 							<span>{el.title}</span>
 							<hr/>
